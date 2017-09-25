@@ -1,7 +1,7 @@
 package model;
 
-import static model.RomanNumber.toArabic;
-import static model.RomanNumber.toRoman;
+import static model.RomanNumber.convertToArabic;
+import static model.RomanNumber.convertToRoman;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -10,41 +10,41 @@ public class RomanNumberTest {
 
 	@Test
 	public void shouldConvertI() {
-		assertEquals(toArabic("i"), 1);
+		assertEquals(convertToArabic("i"), 1);
 	}
 
 	@Test(expected = NumberFormatException.class)
 	public void shouldThrowExceptionWhenRomanIsEmpty() {
-		toArabic("");
+		convertToArabic("");
 	}
 
 	@Test(expected = NumberFormatException.class)
 	public void shouldThrowExceptionWhenInvalidRoman() {
-		toArabic("XXy");
+		convertToArabic("XXy");
 	}
 	
 	@Test
 	public void shouldAddInArabic() {
-		assertEquals(toArabic("XX"), 20);
+		assertEquals(convertToArabic("XX"), 20);
 	}
 	
 	@Test
 	public void shouldSubInArabic() {
-		assertEquals(toArabic("iV"), 4);
+		assertEquals(convertToArabic("iV"), 4);
 	}
 	
 	@Test(expected = NumberFormatException.class)
 	public void shouldThrowExceptionWhenNumberIsLessThan1() {
-		toRoman(0);
+		convertToRoman(0);
 	}
 	
 	@Test(expected = NumberFormatException.class)
 	public void shouldThrowExceptionWhenNumberIsGreatherThan3999() {
-		toRoman(4000);
+		convertToRoman(4000);
 	}
 	
 	@Test
 	public void shouldConvertComplexNumber() {
-		assertEquals(toRoman(944), "CMXLIV");
+		assertEquals(convertToRoman(944), "CMXLIV");
 	}
 }
