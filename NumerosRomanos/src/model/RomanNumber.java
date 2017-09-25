@@ -22,7 +22,7 @@ class RomanNumber {
 		numberToLetter.put(1, "I");
 	}
 	
-	int toArabic(String romano)  throws NumberFormatException {
+	static int toArabic(String romano) throws NumberFormatException {
 		if (romano.length() == 0) throw new NumberFormatException("An empty string does not define a roman numeral.");
 
 		romano = romano.toUpperCase();
@@ -53,7 +53,7 @@ class RomanNumber {
 		return arabic;
 	}
 
-	String toRoman(int arabic) throws NumberFormatException {
+	static String toRoman(int arabic) throws NumberFormatException {
 		if (arabic > 3999 || arabic < 1) throw new NumberFormatException("Invalid value.");
 
 		String roman = "";
@@ -66,7 +66,7 @@ class RomanNumber {
 		return roman;
 	}
 
-	private int letterToNumber(char letter) {
+	private static int letterToNumber(char letter) {
 		switch (letter) {
 			case 'I': return 1;
 			case 'V': return 5;
