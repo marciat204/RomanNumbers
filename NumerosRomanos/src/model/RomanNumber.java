@@ -23,11 +23,11 @@ class RomanNumber {
 	}
 	
 	static int convertToArabic(String romano) throws NumberFormatException {
-		if (romano.length() == 0) throw new NumberFormatException("An empty string does not define a roman numeral.");
+		if (romano.isEmpty()) throw new NumberFormatException("An empty string does not define a roman numeral.");
 
 		romano = romano.toUpperCase();
 
-		int i = 0;  
+		int i = 0;
 		int arabic = 0;  
 
 		while (i < romano.length()) {
@@ -37,7 +37,7 @@ class RomanNumber {
 
 			if (number < 0) throw new NumberFormatException("Illegal character \"" + letter + "\" in roman numeral.");
 
-			i++; 
+			i++;
 
 			if (i == romano.length()) arabic += number;
 			else {
@@ -56,14 +56,14 @@ class RomanNumber {
 	static String convertToRoman(int arabic) throws NumberFormatException {
 		if (arabic > 3999 || arabic < 1) throw new NumberFormatException("Invalid value.");
 
-		String roman = "";
+		StringBuilder roman = new StringBuilder();
 		for (Map.Entry<Integer, String> pair : numberToLetter.entrySet()) {
 			while(arabic >= pair.getKey()){
-				roman += pair.getValue();
+				roman.append(pair.getValue());
 				arabic -= pair.getKey();				
 			}		    
 		}
-		return roman;
+		return roman.toString();
 	}
 
 	private static int convertToNumber(char letter) {
